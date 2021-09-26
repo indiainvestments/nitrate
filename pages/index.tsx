@@ -1,120 +1,116 @@
-import Head from "next/head";
-import Image from "next/image";
+import { NavTextLink } from '../components/nav-text-link';
+import { useDarkMode } from '../hooks/use-dark-mode';
 
-import { NavBar } from "../components";
+const navLinkTexts = ['Explore', 'FAQ', 'About'];
 
-export default function Home() {
+function textToLink(text: string): string {
+  return text?.toLowerCase();
+}
+
+const Nitrate: React.FC = () => {
+  const [, switchTheme] = useDarkMode();
   return (
-    <>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <NavBar />
-      <div className="min-h-screen bg-light dark:bg-dark py-6 flex flex-col justify-center sm:py-12">
-        <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-          <div className="relative px-4 py-10 bg-white dark:bg-gray-800 shadow-lg sm:rounded-3xl sm:p-20">
-            <div className="max-w-md mx-auto">
-              <div className="divide-y divide-gray-200">
-                <div className="py-8 text-base leading-6 space-y-4 text-gray-700 dark:text-gray-300 sm:text-lg sm:leading-7">
-                  <p>
-                    An advanced online playground for Tailwind CSS, including
-                    support for things like:
-                  </p>
-                  <ul className="list-disc space-y-2">
-                    <li className="flex items-start">
-                      <span className="h-6 flex items-center sm:h-7">
-                        <svg
-                          className="flex-shrink-0 h-5 w-5 text-cyan-500"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </span>
-                      <p className="ml-2">
-                        Customizing your
-                        <code className="text-sm font-bold text-gray-900 dark:text-gray-200 m-2">
-                          tailwind.config.js
-                        </code>{" "}
-                        file
-                      </p>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="h-6 flex items-center sm:h-7">
-                        <svg
-                          className="flex-shrink-0 h-5 w-5 text-cyan-500"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </span>
-                      <p className="ml-2">
-                        Extracting class names with
-                        <code className="text-sm font-bold text-gray-900 dark:text-gray-200 m-2">
-                          @apply
-                        </code>
-                      </p>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="h-6 flex items-center sm:h-7">
-                        <svg
-                          className="flex-shrink-0 h-5 w-5 text-cyan-500"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </span>
-                      <p className="ml-2">
-                        Code completion with instant preview
-                      </p>
-                    </li>
-                  </ul>
-                  <p>
-                    Perfect for learning how the framework works, prototyping a
-                    new idea, or creating a demo to share online.
-                  </p>
-                </div>
-                <div className="pt-6 text-base leading-6 font-bold dark:text-gray-300 sm:text-lg sm:leading-7">
-                  <p>Want to dig deeper into Tailwind?</p>
-                  <p>
-                    <a
-                      href="https://tailwindcss.com/docs"
-                      className="text-cyan-600 hover:text-cyan-700"
-                    >
-                      {" "}
-                      Read the docs &rarr;{" "}
-                    </a>
-                  </p>
-                </div>
-              </div>
+    <main className="flex flex-col justify-start min-h-screen antialiased bg-gray-100 dark:bg-nitrate-soft-dark px-7 font-nunito">
+      <header className="w-full">
+        <nav className="top-0 grid grid-cols-[12rem,1fr]" role="navigation">
+          {/* Branding */}
+          <div className="col-span-1 col-start-1 py-4 px-7 bg-nitrate dark:bg-nitrate/70 rounded-bl-md">
+            <h1 className="text-lg leading-5 text-white">
+              Passive
+              <br aria-hidden />
+              Fund Catalogue
+            </h1>
+          </div>
+          {/* Rest of the NAV on mobile  */}
+          <div className="flex flex-col justify-center pr-6 md:hidden bg-nitrate dark:bg-nitrate/70 rounded-br-md">
+            <button
+              className="inline-flex self-end px-2 py-2 border rounded border-white/60"
+              type="button"
+            >
+              <svg
+                className="w-8 h-8 text-white"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+          {/* Rest of the nav  */}
+          <div className="hidden md:rounded-br-md md:bg-white md:dark:bg-nitrate-soft-dark md:shadow-sm md:px-3 md:py-3 md:grid md:grid-cols-[1fr,3rem] lg:grid-cols-[1fr,14rem,3rem]">
+            {/* Search box  */}
+            <form className="relative mr-8 rounded-md">
+              <input
+                className="w-full px-3 py-3 placeholder-current border-2 rounded-md dark:border-transparent dark:bg-nitrate-really-dark text-nitrate-text/70 focus:outline-none focus:border-2 focus:border-nitrate dark:text-nitrate/70"
+                placeholder="Start your search here..."
+              />
+              <span className="absolute inset-y-0 right-0 inline-flex flex-col items-center justify-center pr-3">
+                <button
+                  className="transition-colors hover:text-nitrate-text dark:text-nitrate/70 dark:hover:text-nitrate"
+                  type="button"
+                >
+                  Advanced Search
+                </button>
+              </span>
+            </form>
+            {/* Links  */}
+            <div className="hidden lg:flex lg:items-center lg:space-x-6 lg:text-nitrate-text">
+              {navLinkTexts.map(linkText => (
+                <NavTextLink
+                  href={textToLink(linkText)}
+                  key={linkText}
+                  linkText={linkText}
+                />
+              ))}
+            </div>
+            {/* Theme switcher  */}
+            <div className="hidden lg:flex lg:flex-col lg:justify-center lg:items-center">
+              <button
+                className="inline-flex"
+                onClick={switchTheme}
+                type="button"
+              >
+                <svg
+                  className="w-6 h-6 transition-colors text-nitrate-text dark:text-white/70 dark:hover:text-white"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.25 10.5V6M22.5 8.25H18M15.75 2.25v3M17.25 3.75h-3M20.312 14.31A8.628 8.628 0 019.69 3.689h0a8.626 8.626 0 1010.623 10.623h0z"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="flex flex-col items-center justify-center lg:hidden">
+              <button className="inline-flex" type="button">
+                <svg
+                  className="w-8 h-8"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
-        </div>
-      </div>
-    </>
+        </nav>
+      </header>
+    </main>
   );
-}
+};
+
+export default Nitrate;
