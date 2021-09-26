@@ -19,11 +19,14 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      - name: Check Node Version
+        run: node --version
+
       - name: Yarn Install
         run: yarn install --frozen-lockfile
 
       - name: TypeScript Compilation
-        run: yarn tsc --noEmit
+        run: yarn type-check
 
       - name: Lint
         run: yarn lint
