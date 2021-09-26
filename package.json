@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "add-git-hooks": "husky install",
-    "postinstall": "is-ci || husky install"
+    "postinstall": "is-ci || husky install",
+    "lint": "yarn eslint . && yarn stylelint **/*.css"
   },
   "dependencies": {
     "next": "11.1.0",
