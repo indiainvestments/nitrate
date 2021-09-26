@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
-    "redhat.vscode-yaml"
+    "redhat.vscode-yaml",
+    "heybourn.headwind"
   ]
 }

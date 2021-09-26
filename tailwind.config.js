@@ -25,15 +25,21 @@ module.exports = {
           DEFAULT: '#5D5FEF',
           text: '#20272E',
           dark: '#2C2D30',
-          'really-dark': '#20272E',
+          border: '#B8BFCA',
+          muted: '#768089',
+          'dark-fill': '#2A3239',
           'soft-dark': '#282F36',
           'softer-dark': '#8C8989',
         },
+      },
+      fontSize: {
+        xxs: ['0.6875rem', '1.1875rem'],
       },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  // eslint-disable-next-line import/no-extraneous-dependencies, global-require
+  plugins: [require('@tailwindcss/line-clamp')],
 };
