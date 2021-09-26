@@ -43,7 +43,7 @@ function textToLink(text: string): string {
 const Nitrate: React.FC = () => {
   const [, switchTheme] = useDarkMode();
   return (
-    <main className="flex flex-col justify-start min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill px-7 font-nunito">
+    <main className="flex flex-col justify-start min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill font-nunito">
       <header className="w-full sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1280px] mx-auto">
         <nav className="top-0 grid grid-cols-[12rem,1fr]" role="navigation">
           {/* Branding */}
