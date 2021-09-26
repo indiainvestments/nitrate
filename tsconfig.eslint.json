@@ -14,6 +14,7 @@
     ".eslintrc.js",
     "tsconfig.json",
     "tsconfig.eslint.json",
-    "prettierrc.js"
+    "prettierrc.js",
+    "stylelint.config.js"
   ]
 }
