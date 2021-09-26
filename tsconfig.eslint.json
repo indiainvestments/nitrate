@@ -1,0 +1,19 @@
+// eslint-disable-next-line no-unused-expressions
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    // include all .json files
+    // and jsx / js / ts / tsx
+    "**/*.json",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "test/**/*",
+    "__tests__/**/*",
+    ".eslintrc.js",
+    "tsconfig.json",
+    "tsconfig.eslint.json",
+    "prettierrc.js"
+  ]
+}

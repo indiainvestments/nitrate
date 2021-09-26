@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-expressions
 {
   "compilerOptions": {
     "target": "es5",
