@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "add-git-hooks": "husky install",
-    "postinstall": "is-ci || husky install"
+    "postinstall": "is-ci || husky install",
+    "lint:css": "stylelint **/*.css",
+    "lint:js": "eslint .",
+    "lint": "concurrently npm:lint:*",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "next": "11.1.0",
@@ -21,6 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "autoprefixer": "^10.3.1",
+    "concurrently": "^6.2.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.1.2",
