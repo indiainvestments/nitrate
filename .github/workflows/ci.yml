@@ -19,8 +19,14 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: Check Node Version
-        run: node --version
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
 
       - name: Yarn Install
         run: yarn install --frozen-lockfile
