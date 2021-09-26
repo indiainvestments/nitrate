@@ -44,7 +44,7 @@ const Nitrate: React.FC = () => {
   const [, switchTheme] = useDarkMode();
   return (
     <main className="flex flex-col justify-start min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill px-7 font-nunito">
-      <header className="w-full">
+      <header className="w-full sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1280px] mx-auto">
         <nav className="top-0 grid grid-cols-[12rem,1fr]" role="navigation">
           {/* Branding */}
           <div className="col-span-1 col-start-1 py-4 px-7 bg-nitrate dark:bg-nitrate/70 rounded-bl-md">
