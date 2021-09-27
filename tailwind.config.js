@@ -1,7 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires
 const colors = require('tailwindcss/colors');
-// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-var-requires
-const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
@@ -10,7 +8,7 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
-      nunito: ['Nunito', ...defaultTheme.fontFamily.sans],
+      nunito: "'Nunito', sans-serif",
     },
     extend: {
       colors: {
