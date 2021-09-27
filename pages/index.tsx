@@ -1,7 +1,40 @@
 import { NavTextLink } from '../components/nav-text-link';
 import { useDarkMode } from '../hooks/use-dark-mode';
+import { CategoryInfoProps, CategoryInfo } from '../components/category-info';
 
 const navLinkTexts = ['Explore', 'FAQ', 'About'];
+
+const DUMMY_ROUTE = '/dummy';
+
+const categoryInfoData: CategoryInfoProps[] = [
+  {
+    heading: 'Indian Equity Index Funds',
+    description:
+      'Participate in the India growth story by investing in the top stocks from Nifty, Sensex, and other indices.',
+    linkText: 'See 346 funds',
+  },
+  {
+    heading: 'Indian Debt Index Funds',
+    description:
+      'Invest in high quality, diversified, fixed income instruments for steady growth.',
+    linkText: 'See 3 funds',
+  },
+  {
+    heading: 'US Equity Index Funds',
+    description:
+      'Invest in top US multinationals in NASDAQ, S&P500, and other indices.',
+    linkText: 'See 3461 funds',
+  },
+  {
+    heading: 'Strategic Index Funds',
+    description:
+      'Invest in factor based and quantitative index funds, with higher historic equity premium.',
+    linkText: 'See 346 funds',
+  },
+].map(info => ({
+  ...info,
+  link: DUMMY_ROUTE,
+}));
 
 function textToLink(text: string): string {
   return text?.toLowerCase();
@@ -10,7 +43,7 @@ function textToLink(text: string): string {
 const Nitrate: React.FC = () => {
   const [, switchTheme] = useDarkMode();
   return (
-    <main className="flex flex-col justify-start min-h-screen antialiased bg-gray-100 dark:bg-nitrate-soft-dark px-7 font-nunito">
+    <main className="flex flex-col justify-start min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill px-7 font-nunito">
       <header className="w-full">
         <nav className="top-0 grid grid-cols-[12rem,1fr]" role="navigation">
           {/* Branding */}
@@ -42,11 +75,11 @@ const Nitrate: React.FC = () => {
             </button>
           </div>
           {/* Rest of the nav  */}
-          <div className="hidden md:rounded-br-md md:bg-white md:dark:bg-nitrate-soft-dark md:shadow-sm md:px-3 md:py-3 md:grid md:grid-cols-[1fr,3rem] lg:grid-cols-[1fr,14rem,3rem]">
+          <div className="hidden md:rounded-br-md md:bg-white md:dark:bg-nitrate-text md:shadow-sm md:px-3 md:py-3 md:grid md:grid-cols-[1fr,3rem] lg:grid-cols-[1fr,14rem,3rem]">
             {/* Search box  */}
             <form className="relative mr-8 rounded-md">
               <input
-                className="w-full px-3 py-3 placeholder-current border-2 rounded-md dark:border-transparent dark:bg-nitrate-really-dark text-nitrate-text/70 focus:outline-none focus:border-2 focus:border-nitrate dark:text-nitrate/70"
+                className="w-full px-3 py-3 placeholder-current border-2 rounded-md dark:border-nitrate-border/40 dark:bg-nitrate-text text-nitrate-text/70 focus:outline-none focus:border-2 focus:border-nitrate dark:focus:border-nitrate dark:text-nitrate/70"
                 placeholder="Start your search here..."
               />
               <span className="absolute inset-y-0 right-0 inline-flex flex-col items-center justify-center pr-3">
@@ -109,6 +142,14 @@ const Nitrate: React.FC = () => {
           </div>
         </nav>
       </header>
+
+      <div className="w-full h-64 mt-5 bg-gray-500" />
+      {/* card group */}
+      <div className="grid grid-cols-1 gap-4 pt-8 md:grid-cols-2 lg:grid-cols-4">
+        {categoryInfoData.map(info => (
+          <CategoryInfo key={info.heading} {...info} />
+        ))}
+      </div>
     </main>
   );
 };
