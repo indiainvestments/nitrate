@@ -64,7 +64,7 @@ const Nitrate: React.FC = () => {
       <main className="relative sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1280px] lg:px-4 xl:px-0 mx-auto flex flex-col justify-start pb-safe">
         {/* Mobile swipe in menu  */}
         <aside
-          className={`fixed top-0 left-0 z-10 h-full bg-white right-5 grid grid-cols-1 grid-rows-[4rem,1fr,2.25rem] transition-transform ease-in-out duration-200 ${mobileNavClasses(
+          className={`fixed top-0 left-0 z-10 h-full bg-white right-5 grid grid-cols-1 grid-rows-[4rem,1fr,2.25rem] dark:bg-nitrate-dark transition-transform ease-in-out duration-200 ${mobileNavClasses(
             mobileNavOpen,
           )}`}
           ref={asideRef}
