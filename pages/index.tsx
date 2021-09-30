@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { NavTextLink } from '../components/nav-text-link';
-import { useDarkMode } from '../hooks/use-dark-mode';
+import { useDarkMode, useSideNav } from '../hooks';
 import { CategoryInfoProps, CategoryInfo } from '../components/category-info';
 
 const navLinkTexts = ['Explore', 'FAQ', 'About'];
@@ -45,55 +45,28 @@ const NavLinks: JSX.Element[] = navLinkTexts.map(linkText => (
   <NavTextLink href={textToLink(linkText)} key={linkText} linkText={linkText} />
 ));
 
+const mobileNavClasses = (mobileNavOpen: boolean) =>
+  mobileNavOpen ? 'translate-x-0' : '-translate-x-full';
+const mobileNavCoverLayer = (mobileNavOpen: boolean) =>
+  mobileNavOpen ? 'z-10 opacity-100 pointer-events-auto' : 'opacity-0';
+
 const Nitrate: React.FC = () => {
   const [mountedOnClient, switchTheme] = useDarkMode();
-  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
   const asideRef = useRef<HTMLDivElement>(null);
-
-  const openMobileNav = () => setMobileNavOpen(true);
-  const closeMobileNav = () => setMobileNavOpen(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || typeof document === 'undefined') {
-      return;
-    }
-    if (!mobileNavOpen) {
-      return;
-    }
-    const mobileTapHandler = (e: MouseEvent) => {
-      const el = e.target as HTMLElement;
-
-      if (!asideRef.current?.contains(el)) {
-        /**
-         * Close the menu
-         */
-        setMobileNavOpen(false);
-      }
-    };
-    window.addEventListener('click', mobileTapHandler);
-
-    return () => {
-      window.removeEventListener('click', mobileTapHandler);
-    };
-  }, [mobileNavOpen]);
-
-  const mobileNavClasses = useMemo(
-    () => (mobileNavOpen ? 'translate-x-0' : '-translate-x-full'),
-    [mobileNavOpen],
-  );
-
-  const mobileNavCoverLayer = useMemo(
-    () =>
-      mobileNavOpen ? 'z-10 opacity-100 pointer-events-auto' : 'opacity-0',
-    [mobileNavOpen],
-  );
+  const {
+    sideNavOpen: mobileNavOpen,
+    openSideNav: openMobileNav,
+    closeSideNav: closeMobileNav,
+  } = useSideNav(asideRef);
 
   return (
     <div className="min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill">
       <main className="relative sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1280px] lg:px-4 xl:px-0 mx-auto flex flex-col justify-start pb-safe">
         {/* Mobile swipe in menu  */}
         <aside
-          className={`fixed top-0 left-0 z-10 h-full bg-white right-5 grid grid-cols-1 grid-rows-[4rem,1fr,2.25rem] transition-transform ease-in-out duration-200 ${mobileNavClasses}`}
+          className={`fixed top-0 left-0 z-10 h-full bg-white right-5 grid grid-cols-1 grid-rows-[4rem,1fr,2.25rem] transition-transform ease-in-out duration-200 ${mobileNavClasses(
+            mobileNavOpen,
+          )}`}
           ref={asideRef}
         >
           {/* top section  */}
@@ -114,7 +87,9 @@ const Nitrate: React.FC = () => {
           </div>
         </aside>
         <div
-          className={`fixed top-0 right-0 w-5 min-h-screen bg-gray-800/70 mix-blend-multiply opacity-0 pointer-events-none transition-opacity ${mobileNavCoverLayer}`}
+          className={`fixed top-0 right-0 w-5 min-h-screen bg-gray-800/70 mix-blend-multiply opacity-0 pointer-events-none transition-opacity ${mobileNavCoverLayer(
+            mobileNavOpen,
+          )}`}
         />
         <header className="w-full">
           <nav className="top-0 grid grid-cols-[12rem,1fr]">
