@@ -9,7 +9,7 @@ function NavTextLink(props: Readonly<NavTextLinkProps>): JSX.Element {
   return (
     <Link href={props.href}>
       <a
-        className="transition-transform-colors hover:text-nitrate hover:scale-105 dark:text-nitrate/70"
+        className="transition-colors hover:text-nitrate dark:text-nitrate/70"
         href={props.href}
       >
         {props.linkText}
