@@ -192,7 +192,7 @@ const Nitrate: React.FC = () => {
 
         <div className="w-full mt-5 bg-gray-500 h-96" />
         {/* card group */}
-        <div className="grid grid-cols-1 gap-5 px-4 pt-8 md:grid-cols-2 lg:grid-cols-4 sm:px-0">
+        <div className="grid grid-cols-1 gap-5 px-4 pt-5 md:grid-cols-2 lg:grid-cols-4 sm:px-0">
           {categoryInfoData.map(info => (
             <CategoryInfo key={info.heading} {...info} />
           ))}
