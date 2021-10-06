@@ -60,7 +60,7 @@ const Nitrate: React.FC = () => {
   } = useSideNav(asideRef);
 
   return (
-    <div className="min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill">
+    <div className="min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill font-nunito">
       <main className="relative sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1280px] lg:px-4 xl:px-0 mx-auto flex flex-col justify-start pb-safe">
         {/* Mobile swipe in menu  */}
         <aside
@@ -95,7 +95,7 @@ const Nitrate: React.FC = () => {
           <nav className="top-0 grid grid-cols-[12rem,1fr]">
             {/* Branding */}
             <div className="col-span-1 col-start-1 px-4 py-4 bg-nitrate dark:bg-nitrate/70 sm:rounded-bl-md">
-              <h1 className="text-lg leading-5 text-white font-nunito">
+              <h1 className="text-lg leading-5 text-white">
                 Passive
                 <br aria-hidden />
                 Fund Catalogue
