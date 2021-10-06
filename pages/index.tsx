@@ -128,7 +128,7 @@ const Nitrate: React.FC = () => {
               {/* Search box  */}
               <form className="relative mr-8 rounded-md">
                 <input
-                  className="w-full px-3 py-3 placeholder-current border-2 rounded-md dark:border-nitrate-border/40 dark:bg-nitrate-text text-nitrate-text/70 focus:outline-none focus:border-2 focus:border-nitrate dark:focus:border-nitrate dark:text-nitrate/70"
+                  className="w-full px-3 py-3 placeholder-current border rounded-md dark:border-nitrate-border/40 dark:bg-nitrate-text text-nitrate-text/70 focus:outline-none focus:border-2 focus:border-nitrate dark:focus:border-nitrate dark:text-nitrate/70"
                   placeholder="Start your search here..."
                 />
                 <span className="absolute inset-y-0 right-0 inline-flex flex-col items-center justify-center pr-3">
