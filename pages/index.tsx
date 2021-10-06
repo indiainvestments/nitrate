@@ -95,7 +95,7 @@ const Nitrate: React.FC = () => {
           <nav className="top-0 grid grid-cols-[12rem,1fr]">
             {/* Branding */}
             <div className="col-span-1 col-start-1 px-4 py-4 bg-nitrate dark:bg-nitrate/70 sm:rounded-bl-md">
-              <h1 className="text-lg leading-5 text-white font-nunito">
+              <h1 className="text-lg leading-5 text-white">
                 Passive
                 <br aria-hidden />
                 Fund Catalogue
