@@ -33,6 +33,12 @@ module.exports = {
       fontSize: {
         xxs: ['0.6875rem', '1.1875rem'],
       },
+      boxShadow: {
+        hover:
+          '0px 1px 1px rgba(0, 0, 0, 0.05), 0px 5px 5px rgba(0, 0, 0, 0.05), 0px 9px 9px rgba(0, 0, 0, 0.05)',
+        regular:
+          '0px 1px 1px rgba(0, 0, 0, 0.02), 0px 5px 5px rgba(0, 0, 0, 0.02), 0px 9px 9px rgba(0, 0, 0, 0.02);',
+      },
     },
   },
   variants: {

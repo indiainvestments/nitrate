@@ -60,7 +60,7 @@ const Nitrate: React.FC = () => {
   } = useSideNav(asideRef);
 
   return (
-    <div className="min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill">
+    <div className="min-h-screen antialiased bg-gray-100 dark:bg-nitrate-dark-fill font-nunito">
       <main className="relative sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1280px] lg:px-4 xl:px-0 mx-auto flex flex-col justify-start pb-safe">
         {/* Mobile swipe in menu  */}
         <aside
@@ -128,7 +128,7 @@ const Nitrate: React.FC = () => {
               {/* Search box  */}
               <form className="relative mr-8 rounded-md">
                 <input
-                  className="w-full px-3 py-3 placeholder-current border-2 rounded-md dark:border-nitrate-border/40 dark:bg-nitrate-text text-nitrate-text/70 focus:outline-none focus:border-2 focus:border-nitrate dark:focus:border-nitrate dark:text-nitrate/70"
+                  className="w-full px-3 py-3 placeholder-current border rounded-md dark:border-nitrate-border/40 dark:bg-nitrate-text text-nitrate-text/70 focus:outline-none focus:border-2 focus:border-nitrate dark:focus:border-nitrate dark:text-nitrate/70"
                   placeholder="Start your search here..."
                 />
                 <span className="absolute inset-y-0 right-0 inline-flex flex-col items-center justify-center pr-3">
@@ -192,7 +192,7 @@ const Nitrate: React.FC = () => {
 
         <div className="w-full mt-5 bg-gray-500 h-96" />
         {/* card group */}
-        <div className="grid grid-cols-1 gap-4 px-4 pt-8 md:grid-cols-2 lg:grid-cols-4 sm:px-0">
+        <div className="grid grid-cols-1 gap-5 px-4 pt-5 md:grid-cols-2 lg:grid-cols-4 sm:px-0">
           {categoryInfoData.map(info => (
             <CategoryInfo key={info.heading} {...info} />
           ))}

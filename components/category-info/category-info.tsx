@@ -13,7 +13,7 @@ function CategoryInfo({
 }: Readonly<CategoryInfoProps>): JSX.Element {
   return (
     <a
-      className="flex flex-col justify-between text-gray-700 bg-white border border-transparent rounded-md shadow-lg dark:text-nitrate-muted dark:bg-nitrate-text hover:border-nitrate focus:outline-none focus:border-nitrate"
+      className="flex flex-col justify-between text-gray-700 bg-white border border-transparent rounded-md shadow-regular hover:shadow-hover focus:shadow-hover dark:text-nitrate-muted dark:bg-nitrate-text hover:border-nitrate focus:outline-none focus:border-nitrate"
       href={link}
     >
       <div className="p-4">
